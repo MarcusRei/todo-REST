@@ -41,7 +41,7 @@ exports.login = async (req, res) => {
   //Kollar att vi skickat in korrekt information
   if (!email || !candidatePassword) {
     throw new BadRequestError(
-      "Du måste ge mig ett användarnamn och ett lösenord för att logga in! jeeeeesus..."
+      "Du måste ge mig en email och ett lösenord för att logga in! jeeeeesus..."
     );
   }
 
