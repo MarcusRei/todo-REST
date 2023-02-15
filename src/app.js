@@ -22,8 +22,8 @@ app.use((req, res, next) => {
 
 //4 Create Routes
 
-app.use("/api/v1/todos", todoRoutes);
-app.use("/api/v1/lists", listRoutes);
+app.use("/api/v1/users/todos", todoRoutes);
+app.use("/api/v1/users/lists", listRoutes);
 app.use("/api/v1/users", userRoutes);
 app.use("/api/v1/auth", authRoutes);
 

@@ -29,7 +29,7 @@ exports.createUser = async (req, res) => {};
 exports.deleteUserById = async (req, res) => {
   const userId = req.params.userId;
 
-  const user = await user.findById(userId);
+  const user = await User.findById(userId);
 
   //Du kan bara ta bort dig själv om du inte är admin
   if (!req.user?.role !== userRoles.ADMIN && userId !== req.user?.userId)

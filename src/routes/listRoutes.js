@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const {
-  getAllLists,
+  getAllListsFromUser,
   getListById,
   createNewList,
   updateList,
@@ -9,7 +9,7 @@ const {
 } = require("../controllers/listControllers");
 
 //GET /api//v1/lists
-router.get("/", getAllLists);
+router.get("/", getAllListsFromUser);
 //GET /api/v1/lists
 router.get("/:listId", getListById);
 //POST /api/v1/lists - Create new list
