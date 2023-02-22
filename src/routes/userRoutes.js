@@ -11,8 +11,13 @@ const {
   authorizeRoles,
 } = require("../middleware/authenticationMiddleware");
 
-router.get("/", isAuthenticated, authorizeRoles(userRoles.ADMIN), getAllUsers);
+router.get("/", isAuthenticated, getAllUsers);
 router.get("/:userId", isAuthenticated, getUserById); //Kräver authentication
-router.delete("/:userId", isAuthenticated, deleteUserById); //Kräver Admin eller egen användare
+router.delete(
+  "/:userId",
+  isAuthenticated,
+  authorizeRoles(userRoles.ADMIN),
+  deleteUserById
+); //Kräver Admin eller egen användare
 
 module.exports = router;

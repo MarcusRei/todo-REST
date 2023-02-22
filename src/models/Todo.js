@@ -9,6 +9,11 @@ const TodoSchema = new mongoose.Schema(
       maxLength: 200,
     },
     success: Boolean,
+    listId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "List",
+      required: true,
+    },
   },
   {
     timestamps: true,

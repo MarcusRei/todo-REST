@@ -1,4 +1,5 @@
 const Todo = require("../models/Todo");
+const List = require("../models/List");
 
 exports.getAllTodos = async (req, res) => {
   try {
@@ -51,6 +52,7 @@ exports.createNewTodo = async (req, res) => {
     //Get data from req.body
     const title = req.body.title;
     const success = false;
+    const listId = req.body.listId;
 
     //if (no name || name is empty string) respond bad request
     if (!title) {
@@ -59,20 +61,29 @@ exports.createNewTodo = async (req, res) => {
       });
     }
 
-    //Create todo
-    const newTodo = await Todo.create({
+    //Get list object
+    const listToUpdate = await List.findById(listId);
+
+    return res.json(listToUpdate);
+
+    //Create todo object
+    /* const newTodo = await Todo.create({
       title: title,
       success: success,
-    });
+      listId: listId,
+    }); */
+
+    //listToUpdate.todos.splice(0, todo._id);
 
     //Respond
-    return res
+    //return listToUpdate;
+    /* return res
       .setHeader(
         "Location",
-        `http://localhost:${process.env.PORT}/api/v1/todos/${newTodo._id}`
+        `http://localhost:${process.env.PORT}/api/v1/users/todos/${newTodo._id}`
       )
       .status(201)
-      .json(newTodo);
+      .json(newTodo); */
   } catch (error) {
     console.error(error);
     return res.status(500).json({

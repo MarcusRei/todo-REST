@@ -24,15 +24,13 @@ exports.getUserById = async (req, res) => {
   return res.json(user);
 };
 
-exports.createUser = async (req, res) => {};
-
 exports.deleteUserById = async (req, res) => {
   const userId = req.params.userId;
 
   const user = await User.findById(userId);
 
   //Du kan bara ta bort dig själv om du inte är admin
-  if (!req.user?.role !== userRoles.ADMIN && userId !== req.user?.userId)
+  if (!req.user?.role !== userRoles.ADMIN || userId !== req.user?.userId)
     throw new UnauthorizedError(
       "Vänta nu... Du får ju inte ta bort den här! Du är inte admin din lilla gris!"
     );
